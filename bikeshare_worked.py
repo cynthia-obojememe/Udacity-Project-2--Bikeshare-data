@@ -126,11 +126,11 @@ def load_data(city, month, day):
 
     return df
 
+
 # load_data(city, month, day)
 
 
 def time_stats(df):
-
     # Convert the Start Time column to datetime and check datatype
 
     """Displays statistics on the most frequent times of travel."""
@@ -160,6 +160,7 @@ def time_stats(df):
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-' * 40)
+
 
 # time_stats(df)
 
@@ -233,6 +234,18 @@ def user_stats(df):
     print('-' * 40)
 
 
+def view_raw_data(df):
+    
+    print(df.head())
+    next = 0
+    while True:
+        view_raw_data = input('\nWould you like to view next five row of raw data? Enter yes or no.\n')
+        if view_raw_data.lower() != 'yes':
+            return
+        next = next + 5
+        print(df.iloc[next:next + 5])
+
+
 def main():
     while True:
         city, month, day = get_filters()
@@ -242,10 +255,7 @@ def main():
         station_stats(df)
         trip_duration_stats(df)
         user_stats(df)
-
-        restart = input('\nWould you like to restart? Enter yes or no.\n')
-        if restart.lower() != 'yes':
-            break
+        view_raw_data(df)
 
 
 if __name__ == "__main__":
