@@ -36,14 +36,14 @@ def get_filters():
     """
 
     print('Hello! I am happy to help you. Let\'s explore some US bikeshare data!')
-    city_datas = ('chicago',
-                  'new york city',
-                  'washington')
+#     city_datas = ('chicago',
+#                   'new york city',
+#                   'washington')
 
     while True:
         city = (input(
             "\nPlease input a City which you would like to analyse? Choose from chicago, new york city or washington\n:")).lower()
-        if city in city_datas:
+        if city in CITY_DATA:
 
             print(" Good to Go!")
             break
@@ -102,7 +102,7 @@ def load_data(city, month, day):
     df['month'] = df['Start Time'].dt.month
 
     # extract month from Start Time to create new columns
-    df['day_of_week'] = df['Start Time'].dt.dayofweek
+    df['day_of_week'] = df['Start Time'].dt.day_of_week
 
     # extract month from Start Time to create new columns
     df['hour'] = df['Start Time'].dt.hour
