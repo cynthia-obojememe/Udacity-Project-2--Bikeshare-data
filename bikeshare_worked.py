@@ -68,7 +68,8 @@ def get_filters():
     while True:
         day = str(input("\nPlease enter your preferred day of the week,(e.g, monday)"
                         "please type 'all' or view all option.:\n")).lower()
-        print(f"\nYou have chosen {day.title()} as your days_of_week.")
+        
+        print(f"\nYou have chosen {day.title()} as your daysofweek.")
         if day in DAYS_LIST:
             break
         print("Please try again and input the accepted format for the day of the week:")
@@ -102,7 +103,7 @@ def load_data(city, month, day):
     df['month'] = df['Start Time'].dt.month
 
     # extract month from Start Time to create new columns
-    df['day_of_week'] = df['Start Time'].dt.day_of_week
+    df['day_of_week'] = df['Start Time'].dt.dayofweek
 
     # extract month from Start Time to create new columns
     df['hour'] = df['Start Time'].dt.hour
